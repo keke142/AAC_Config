@@ -150,7 +150,7 @@ speed:
    horizontal_velocity: 2.5
 
    # Required horizontal velcoity for a midair check
-   min_horizontal_velocity: 0.1
+   min_horizontal_velocity: 0.05
 
    # Multiplier of the maximum distance if the player is jumping
    jump_multiplier: 1.8
@@ -171,7 +171,7 @@ speed:
    max_use_toggles: 15
 
    # Multiplier for speed. Increase if you have false positives.
-   speed_multiplier: 0.35
+   speed_multiplier: 0.32
 
    # Multiplier for slowness. Decrease if you have false positives.
    slow_multiplier: 0.03
@@ -477,7 +477,7 @@ fastbreak:
    enabled: true
 
    # How many ticks should fastbreak count as lag, and ignore
-   let_ticks: 3
+   let_ticks: 2
 
    # Should AAC cancel an illegal block break?
    cancel_break: true
@@ -502,6 +502,19 @@ fastplace:
    thresholds:
       10: "aacstaffnotify {player} est suspecté de FastPlace (ping = {ping}, tps = {tps})"
       20: "aackick {player} Le FastPlace n'est pas autorisé !"
+
+# Nuker stops players from breaking too many blocks at once
+nuker:
+   # Do you want to enable the nuker check?
+   enabled: true
+
+   # How many blocks should a player be able to break in 1 second
+   max_breaks_per_second: 15
+
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for Nuker (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Nuker is not allowed"
 
 # Spam prevents players from spamming the server chat
 spam:
@@ -548,3 +561,7 @@ log_file: false
 
 # Should AAC log events to the console?
 log_console: false
+
+# Should /aackick broadcast a message?
+aackick_broadcast: true
+
