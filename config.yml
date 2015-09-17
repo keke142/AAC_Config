@@ -36,8 +36,8 @@ angle:
    
    # Map of violation levels to commands
    thresholds:
-      6: "aacstaffnotify {player} is suspected for Killaura (Angle) (ping = {ping}, tps = {tps})"
-      12: "aackick {player} Killaura is not allowed"
+      6: "aacstaffnotify {player} est suspecté de Killaura (Angle) (ping = {ping}, tps = {tps})"
+      12: "aackick {player} Le Killaura n'est pas autorisé !"
 
 # BadPackets prevents players from using packets to exploit the server
 badpackets:
@@ -54,24 +54,24 @@ badpackets:
    
    # Map of violation levels to commands
    thresholds:
-      30: "aacstaffnotify {player} is suspected for Regen/NoPotion (ping = {ping}, tps = {tps})"
-      70: "aackick {player} NoPotion (or related) is not allowed"
+      30: "aacstaffnotify {player} est suspecté de Regen/NoPotion (ping = {ping}, tps = {tps})"
+      70: "aackick {player} Le NoPotion (ou autre) n'est pas autorisé !"
    
 # Criticals prevents players from getting critical hits when it's not possible
 criticals:
    # Do you want to enable the criticals check?
-   enabled: true
+   enabled: false
    
    # How many critical hits should a player be able to chain
-   max_chained_crits: 20
+   max_chained_crits: 5
    
    # Should a hit be cancelled if it is a critical and the player is on the ground?
    cancel_false_hit: true
    
    # Map of violation levels to commands
    thresholds:
-      2: "aacstaffnotify {player} is suspected for Criticals (ping = {ping}, tps = {tps})"
-      5: "aackick {player} Criticals hacking is not allowed"
+      2: "aacstaffnotify {player} est suspecté de Criticals (ping = {ping}, tps = {tps})"
+      5: "aackick {player} Le Criticals n'est pas autorisé !"
 
 # Fastbow prevents players from shooting their bow too quickly
 fastbow:
@@ -88,8 +88,8 @@ fastbow:
    
    # Map of violation levels to commands
    thresholds:
-      3: "aacstaffnotify {player} is suspected for FastBow (ping = {ping}, tps = {tps})"
-      12: "aackick {player} FastBow is not allowed"
+      3: "aacstaffnotify {player} est suspecté de FastBow (ping = {ping}, tps = {tps})"
+      12: "aackick {player} Le FastBow n'est pas autorisé !"
 
 # FightSpeed prevents players from attacking too quickly
 fightspeed:
@@ -102,8 +102,8 @@ fightspeed:
    
    # Map of violation levels to commands
    thresholds:
-      40: "aacstaffnotify {player} is suspected for Killaura/AutoClicker (FightSpeed) (ping = {ping}, tps = {tps})"
-      80: "aackick {player} Killaura/AutoClicker is not allowed"
+      40: "aacstaffnotify {player} est suspecté de Killaura/AutoClicker (FightSpeed) (ping = {ping}, tps = {tps})"
+      80: "aackick {player} Le Killaura/AutoClicker n'est pas autorisé !"
 
 # Fly kicks players who move too high
 fly:
@@ -124,8 +124,8 @@ fly:
    
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for Fly (ping = {ping}, tps = {tps})"
-      20: "aackick {player} Fly hacking is not allowed"
+      10: "aacstaffnotify {player} est suspecté de Fly (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le Fly n'est pas autorisé !"
    
 # Speed kicks players who move too quickly
 speed:
@@ -181,9 +181,9 @@ speed:
 
    # Map of violation levels to commands
    thresholds:
-      8: "aacmessage {player} It looks like you might be glitching, please tap sneak and block with your sword"
-      20: "aacstaffnotify {player} is suspected for Speed hacking (ping = {ping}, tps = {tps})"
-      30: "aackick {player} Speed is not allowed"
+      8: "aacmessage {player} Il semble que vous êtes glitché, s'il vous plaît appuyez sur sneak et parrer avec votre épée"
+      20: "aacstaffnotify {player} est suspecté de Speed (ping = {ping}, tps = {tps})"
+      30: "aackick {player} Le Speed n'est pas autorisé !"
 
 # HeadRoll stops players being derps :/
 headroll:
@@ -192,8 +192,8 @@ headroll:
 
    # Map of violation levels to commands
    thresholds:
-      1: "aacstaffnotify {player} is suspected for Derp hacks (ping = {ping}, tps = {tps})"
-      3: "aackick {player} Derp is not allowed"
+      1: "aacstaffnotify {player} est suspecté de Derp (ping = {ping}, tps = {tps})"
+      3: "aackick {player} Le Derp n'est pas autorisé !"
 
 # Forcefield detects combat hacks which hit entities around the player
 forcefield:
@@ -241,8 +241,8 @@ forcefield:
    
    # Map of violation levels to commands
    thresholds:
-      13: "aacstaffnotify {player} is suspected for Killaura (NPC check) (ping = {ping}, tps = {tps})"
-      20: "aackick {player} Killaura is not allowed"
+      13: "aacstaffnotify {player} est suspecté de Killaura (NPC check) (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le Killaura n'est pas autorisé !"
    
 # Knockback checks if the player moves after he is hit
 knockback:
@@ -263,8 +263,8 @@ knockback:
    
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for Anti-Knockback (ping = {ping}, tps = {tps})"
-      16: "aackick {player} Anti-Knockback is not allowed"
+      10: "aacstaffnotify {player} est suspecté de Anti-Knockback (ping = {ping}, tps = {tps})"
+      16: "aackick {player} Le Anti-Knockback n'est pas autorisé !"
 
 # Reach checks if entites the player hits are close enough to the player
 reach:
@@ -282,8 +282,8 @@ reach:
    
    # Map of violation levels to commands
    thresholds:
-      5: "aacstaffnotify {player} is suspected for Killaura (Reach) (ping = {ping}, tps = {tps})"
-      8: "aackick {player} Killaura is not allowed"
+      5: "aacstaffnotify {player} est suspecté de Killaura (Reach) (ping = {ping}, tps = {tps})"
+      8: "aackick {player} Le Killaura n'est pas autorisé !"
 
 # NoSwing makes sure players swing their arm when attacking
 noswing:
@@ -292,8 +292,8 @@ noswing:
 
    # Map of violation levels to commands
    thresholds:
-      8: "aacstaffnotify {player} is suspected for NoSwing (ping = {ping}, tps = {tps})"
-      20: "aackick {player} NoSwing is not allowed"
+      8: "aacstaffnotify {player} est suspecté de NoSwing (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le NoSwing n'est pas autorisé !"
 
 # Regen directly stops players from healing too quickly
 regen:
@@ -308,8 +308,8 @@ regen:
 
    # Map of violation levels to commands
    thresholds:
-      8: "aacstaffnotify {player} is suspected for Regen (ping = {ping}, tps = {tps})"
-      15: "aackick {player} Regen is not allowed"
+      8: "aacstaffnotify {player} est suspecté de Regen (ping = {ping}, tps = {tps})"
+      15: "aackick {player} Le Regen n'est pas autorisé !"
 
 # Killaura detects combat hacks which give an unfair advantage
 killaura:
@@ -361,8 +361,8 @@ killaura:
 
    # Map of violation levels to commands
    thresholds:
-      20: "aacstaffnotify {player} is suspected for Killaura (Heuristics) (ping = {ping}, tps = {tps})"
-      30: "aackick {player} Killaura is not allowed"
+      20: "aacstaffnotify {player} est suspecté de Killaura (Heuristics) (ping = {ping}, tps = {tps})"
+      30: "aackick {player} Le Killaura n'est pas autorisé !"
 
 # CombatImpossible cancels hits which cannot happen normally
 combatimpossible:
@@ -377,8 +377,8 @@ combatimpossible:
 
    # Map of violation levels to commands
    thresholds:
-      12: "aacstaffnotify {player} appears to be hitting illegitimately (ping = {ping}, tps = {tps})"
-      20: "aackick {player} Suspicious combat"
+      12: "aacstaffnotify {player} semble avoir frapper illégitimement (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Combat suspicieux !"
 
 # NoFall ensures players take fall damage
 nofall:
@@ -393,7 +393,7 @@ nofall:
    
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for NoFall hacks (ping = {ping}, tps = {tps})"
+      10: "aacstaffnotify {player} est suspecté de NoFall (ping = {ping}, tps = {tps})"
 
 # Glide ensures players fall at the right speed
 glide:
@@ -408,8 +408,8 @@ glide:
    
    # Map of violation levels to commands
    thresholds:
-      15: "aacstaffnotify {player} is suspected for Glide hacks (ping = {ping}, tps = {tps})"
-      25: "aackick {player} Fly is not allowed"
+      15: "aacstaffnotify {player} est suspecté de Glide (ping = {ping}, tps = {tps})"
+      25: "aackick {player} Le Fly n'est pas autorisé !"
 
 # Climb stops people climbing ladders too quickly
 climb:
@@ -424,7 +424,7 @@ climb:
 
    # Map of violation levels to commands
    thresholds:
-      15: "aacstaffnotify {player} is suspected for FastLadder (ping = {ping}, tps = {tps})"
+      15: "aacstaffnotify {player} est suspecté de FastLadder (ping = {ping}, tps = {tps})"
 
 # Jesus stops people from walking on water
 jesus:
@@ -445,8 +445,8 @@ jesus:
 
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for Jesus hacks (ping = {ping}, tps = {tps})"
-      20: "aackick {player} Jesus is not allowed"
+      10: "aacstaffnotify {player} est suspecté de Jesus (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le Jesus n'est pas autorisé !"
 
 # Phase stops people glitching through blocks
 phase:
@@ -455,8 +455,8 @@ phase:
 
    # Map of violation levels to commands
    thresholds:
-      7: "aacstaffnotify {player} is suspected for Phase (ping = {ping}, tps = {tps})"
-      15: "aackick {player} Phase is not allowed"
+      7: "aacstaffnotify {player} est suspecté de Phase (ping = {ping}, tps = {tps})"
+      15: "aackick {player} Le Phase n'est pas autorisé !"
 
 # FastUse stops players consuming items too quickly
 fastuse:
@@ -468,8 +468,8 @@ fastuse:
 
    # Map of violation levels to commands
    thresholds:
-      5: "aacstaffnotify {player} is suspected for FastEat hacks (ping = {ping}, tps = {tps})"
-      9: "aackick {player} FastEat is not allowed"
+      5: "aacstaffnotify {player} est suspecté de FastEat (ping = {ping}, tps = {tps})"
+      9: "aackick {player} Le FastEat n'est pas autorisé !"
 
 # FastBreak stops players from breaking blocks too quickly
 fastbreak:
@@ -484,8 +484,8 @@ fastbreak:
 
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for FastBreak hacks (ping = {ping}, tps = {tps})"
-      20: "aackick {player} FastBreak is not allowed"
+      10: "aacstaffnotify {player} est suspecté de FastBreak (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le FastBreak n'est pas autorisé !"
 
 # FastPlace stops players from placing blocks too quickly
 fastplace:
@@ -500,8 +500,8 @@ fastplace:
 
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is suspected for FastPlace hacks (ping = {ping}, tps = {tps})"
-      20: "aackick {player} FastPlace is not allowed"
+      10: "aacstaffnotify {player} est suspecté de FastPlace (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Le FastPlace n'est pas autorisé !"
 
 # Spam prevents players from spamming the server chat
 spam:
@@ -523,8 +523,8 @@ spam:
    
    # Map of violation levels to commands
    thresholds:
-      10: "aacstaffnotify {player} is probably spamming"
-      15: "aackick {player} Stop spamming, you sad person"
+      10: "aacstaffnotify {player} est probablement entrain de spammer"
+      15: "aackick {player} Le spam est interdit !"
 
 ### General things
 
@@ -541,10 +541,10 @@ kick_ticks: 120
 combat_time: 50
 
 # Should AAC kill combat loggers (combat_time)
-kill_loggers: true
+kill_loggers: false
 
 # Should AAC log events to a file?
-log_file: true
+log_file: false
 
 # Should AAC log events to the console?
-log_console: true
+log_console: false
