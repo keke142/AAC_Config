@@ -1,0 +1,550 @@
+#### AAC Config
+#
+# NOTE: Most of the values here have been tried and tested to work.
+#       It is not recommended that you change them unless you are
+#       getting false positives.
+#		
+#		It would be a good idea to make sure the false positives you're getting aren't actually hackers....
+#
+#
+# The configurable commands will replace "{player}" with the name of the player.
+# You can run multiple commands on a single threshold by creating 2 entries with the same key:
+#  thresholds:
+#     10: "command1"
+#     10: "command2"
+#
+# Be sure to check language.yml for configuration regarding staff chat, etc.
+#
+## If you need any help configuring AAC, or you're getting false positives and you don't know why, feel free to PM me on Spigot.
+
+# Angle forces players to look at entities they want to attack
+angle:
+   # Do you want to enable the angle check
+   enabled: true
+   
+   # How far off the entity should the player be able to look
+   max_diff: 0.30
+
+   # How far off a player should the attacker be able to look?
+   max_player_diff: 0.15
+   
+   # How close must the players be to bypass the angle check?
+   min_dist: 2.0
+   
+   # Should AAC cancel false hits
+   cancel_false_hits: true
+   
+   # Map of violation levels to commands
+   thresholds:
+      6: "aacstaffnotify {player} is suspected for Killaura (Angle) (ping = {ping}, tps = {tps})"
+      12: "aackick {player} Killaura is not allowed"
+
+# BadPackets prevents players from using packets to exploit the server
+badpackets:
+   # Do you want to enable the badpackets check
+   enabled: true
+   
+   # After how many moves should packets be cancelled?
+   cancel_threshold: 14
+   
+   # How many moves should a player be able to send in 3 ticks
+   # An unmodified client should send 3 moves in 3 ticks. Be sure to think about lag
+   # The violation value will be increased by (how many packets the player sends - max_moves) / 10
+   max_moves: 50
+   
+   # Map of violation levels to commands
+   thresholds:
+      30: "aacstaffnotify {player} is suspected for Regen/NoPotion (ping = {ping}, tps = {tps})"
+      70: "aackick {player} NoPotion (or related) is not allowed"
+   
+# Criticals prevents players from getting critical hits when it's not possible
+criticals:
+   # Do you want to enable the criticals check?
+   enabled: true
+   
+   # How many critical hits should a player be able to chain
+   max_chained_crits: 20
+   
+   # Should a hit be cancelled if it is a critical and the player is on the ground?
+   cancel_false_hit: true
+   
+   # Map of violation levels to commands
+   thresholds:
+      2: "aacstaffnotify {player} is suspected for Criticals (ping = {ping}, tps = {tps})"
+      5: "aackick {player} Criticals hacking is not allowed"
+
+# Fastbow prevents players from shooting their bow too quickly
+fastbow:
+   # Do you want to enable the fastbow check
+   enabled: true
+   
+   # What is the minimum force of a shot for it to be registered
+   # This goes from 0 to 1, 1 being a fully charged bow
+   min_force: 0.15
+   
+   # How many of these shots should a player be able to fire in 1 second
+   # it takes 1.2 seconds to fully draw a bow
+   shots_fired_threshold: 3
+   
+   # Map of violation levels to commands
+   thresholds:
+      3: "aacstaffnotify {player} is suspected for FastBow (ping = {ping}, tps = {tps})"
+      12: "aackick {player} FastBow is not allowed"
+
+# FightSpeed prevents players from attacking too quickly
+fightspeed:
+   # Do you want to enable the fightspeed check
+   enabled: true
+   
+   # How many times should a player be able to attack in 1 second
+   # NoCheatPlus's fightspeed check allows 15 hits per second
+   max_hits_per_second: 30
+   
+   # Map of violation levels to commands
+   thresholds:
+      40: "aacstaffnotify {player} is suspected for Killaura/AutoClicker (FightSpeed) (ping = {ping}, tps = {tps})"
+      80: "aackick {player} Killaura/AutoClicker is not allowed"
+
+# Fly kicks players who move too high
+fly:
+   # Do you want to enable the fly check
+   enabled: true
+   
+   # Base max jump height. Expected max is 1.3
+   max_jump: 1.4
+   
+   # How high a player will be allowed to jump after bouncing off a slime block
+   slime_allow: 60.0
+
+   # Increasing velocity_multiplier will improve compatiblility with jump pads.
+   velocity_multiplier: 1.2
+   
+   # How high should a player be allowed to jump after taking damage
+   knockback_allow: 3.5
+   
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for Fly (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Fly hacking is not allowed"
+   
+# Speed kicks players who move too quickly
+speed:
+   # Do you want to enable the speed check
+   enabled: true
+
+   # Speed limits per tick
+   sprinting_speed: 0.4
+   sneaking_speed: 0.2
+
+   # On and under water
+   surface_speed: 0.23
+   underwater_speed: 0.19
+   dive_speed: 0.69
+
+   # Other
+   cobweb_speed: 0.10
+   item_speed: 0.20
+   soul_sand_speed: 0.39
+
+   # Multiplier of horizontal velocity for movement
+   horizontal_velocity: 2.5
+
+   # Required horizontal velcoity for a midair check
+   min_horizontal_velocity: 0.1
+
+   # Multiplier of the maximum distance if the player is jumping
+   jump_multiplier: 1.8
+
+   # Ticks a player should not be checked after entering the water
+   dive_period: 20
+
+   # Should AAC use movement counting to prevent clients from bypassing by sending too many moves?
+   use_move_counting: true
+
+   # How many moves per second should be assumed as legitimate? (NCP = 22)
+   max_moves: 24
+
+   # How many times should a player be allowed to toggle sneak in a second (flare hacked client)
+   max_sneak_toggles: 15
+
+   # How many times should a player be allowed to toggle use in a second (flare hacked client)
+   max_use_toggles: 15
+
+   # Multiplier for speed. Increase if you have false positives.
+   speed_multiplier: 0.35
+
+   # Multiplier for slowness. Decrease if you have false positives.
+   slow_multiplier: 0.03
+
+   # AAC will rubberband detected players band_chance % of the time
+   band_chance: 100
+
+   # Map of violation levels to commands
+   thresholds:
+      8: "aacmessage {player} It looks like you might be glitching, please tap sneak and block with your sword"
+      20: "aacstaffnotify {player} is suspected for Speed hacking (ping = {ping}, tps = {tps})"
+      30: "aackick {player} Speed is not allowed"
+
+# HeadRoll stops players being derps :/
+headroll:
+   # Do you want to enable the headroll check
+   enabled: true
+
+   # Map of violation levels to commands
+   thresholds:
+      1: "aacstaffnotify {player} is suspected for Derp hacks (ping = {ping}, tps = {tps})"
+      3: "aackick {player} Derp is not allowed"
+
+# Forcefield detects combat hacks which hit entities around the player
+forcefield:
+   # Do you want to enable the forcefield check
+   enabled: true
+   
+   # Do you want the player above you to be invisible
+   # *HIGHLY* recommended to be kept at false.
+   # The majority of hacked clients do not target invisible entities.
+   head_player_invisible: false
+
+   # You can make the head player invisible when the player isn't fighting
+   # With this true, the head player will be invisible when the player isn't fighting
+   # If the player isn't fighting or this option is false, AAC will default to head_player_invisible
+   # This takes PVP from combat_time, so make sure that's a sensible value
+   invisible_outside_pvp: true
+   
+   # How high above the player should the headplayer be spawned?
+   # Anything under 2.7 could affect hit detection
+   # Anything above 4.5 could be out of range of the player
+   head_player_height: 3.6
+   
+   # Should the head player be moved away if the player looks up?
+   # This is to prevent players from creating false positives by hitting the head player (if it is visible)
+   no_head_player_looking_up: true
+   
+   # Do you want to spawn the side players
+   # This spawns players within the users' FOV to confuse click aimbot
+   # Side players are invisible, as they are within the user's FOV.
+   use_side_players: true
+   
+   # Use player names and gameprofiles from past players instead of random profiles
+   # This can be extremely useful in preventing bypasses, as the player's details are completely legitimate
+   # This setting has no effect if online_player_names is true.
+   past_player_names: true
+
+   # Should the head player use profiles of players online right now?
+   # If you have nametag plugins that use the scoreboard, keep this disabled
+   # Otherwise, turn this on as it patches a massive number of possible bypasses
+   online_player_names: false
+
+   # Do you want to keep the head player in the tab list?
+   # This can prevent bypasses where the the client checks that the name is in the tablist, before hitting it.
+   head_tablist: false
+   
+   # Map of violation levels to commands
+   thresholds:
+      13: "aacstaffnotify {player} is suspected for Killaura (NPC check) (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Killaura is not allowed"
+   
+# Knockback checks if the player moves after he is hit
+knockback:
+   # Do you want to enable the knockback check
+   enabled: true
+   
+   # How long should AAC wait before checking a player
+   tick_delay: 12
+
+   # Should AAC compensate for ping?
+   add_ping: true
+
+   # What's the maximum ping value AAC should compensate to (pingspoof?)
+   max_ping: 500
+
+   # What's the minimum distance a player should be knocked back
+   min_knockback_dist: 0.1
+   
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for Anti-Knockback (ping = {ping}, tps = {tps})"
+      16: "aackick {player} Anti-Knockback is not allowed"
+
+# Reach checks if entites the player hits are close enough to the player
+reach:
+   # Do you want to enable the reach check
+   enabled: true
+   
+   # How far should AAC allow the player to reach
+   max_reach: 5.2
+   
+   # How far does bukkit allow players to reach (Don't change this)
+   max_bukkit_reach: 9.0
+
+   # Should AAC silently cancel certain violations
+   silent_cancel: true
+   
+   # Map of violation levels to commands
+   thresholds:
+      5: "aacstaffnotify {player} is suspected for Killaura (Reach) (ping = {ping}, tps = {tps})"
+      8: "aackick {player} Killaura is not allowed"
+
+# NoSwing makes sure players swing their arm when attacking
+noswing:
+   # Do you want to enable the noswing check
+   enabled: true
+
+   # Map of violation levels to commands
+   thresholds:
+      8: "aacstaffnotify {player} is suspected for NoSwing (ping = {ping}, tps = {tps})"
+      20: "aackick {player} NoSwing is not allowed"
+
+# Regen directly stops players from healing too quickly
+regen:
+   # Do you want to enable the regen check
+   enabled: true
+
+   # Should AAC cancel regeneration if it happens too quickly?
+   cancel_regen: true
+
+   # What delay should AAC force between regeneration?
+   min_regen_delay: 3600
+
+   # Map of violation levels to commands
+   thresholds:
+      8: "aacstaffnotify {player} is suspected for Regen (ping = {ping}, tps = {tps})"
+      15: "aackick {player} Regen is not allowed"
+
+# Killaura detects combat hacks which give an unfair advantage
+killaura:
+   # Do you want to enable the killaura check
+   enabled: false
+
+   # How far should a player be allowed to yaw in 1 move
+   max_yaw: 100.0
+
+   # How many move events should AAC sample for an average
+   yaw_samples: 48
+
+   # How accurate must aiming be for a violation
+   vl_dot: 0.001
+
+   # How accurate must aiming be for AAC to measure
+   note_dot: 0.3
+
+   # What % of the time should AAC do an NPC check?
+   check_chance: 100
+
+   # How long should AAC wait to spawn the NPC
+   check_delay: 7
+
+   # After spawning the NPC, how long should AAC wait before starting to count hits?
+   # check_delay + listen_delay must be less than 9, or hits will be lost.
+   listen_delay: 1
+
+   # How far away must 2 players be to be checked?
+   min_dist: 2.0
+
+   # How long should the NPC be spawned for?
+   ticks_spawned: 9
+
+   # How far along the distance should the NPC be spawned
+   percent_distance: 80
+
+   # How much should the NPC check be weighted per hit?
+   npc_multiplier: 4
+
+   # How far off should a player be able to look to allow the hit
+   max_diff: 0.1
+
+   # How far should the player be allowed to reach through the NPC
+   max_reach: 4.5
+
+   # How long should a player be prevented from hitting someone when he fails this check? (ticks)
+   suspended_combat_time: 12
+
+   # Map of violation levels to commands
+   thresholds:
+      20: "aacstaffnotify {player} is suspected for Killaura (Heuristics) (ping = {ping}, tps = {tps})"
+      30: "aackick {player} Killaura is not allowed"
+
+# CombatImpossible cancels hits which cannot happen normally
+combatimpossible:
+   # Do you want to enable the CombatImpossible check
+   enabled: true
+
+   # Should hits be cancelled if the attacker is dead?
+   cancel_dead: true
+
+   # Should hits be cancelled if the attacker is using an item?
+   cancel_using_item: true
+
+   # Map of violation levels to commands
+   thresholds:
+      12: "aacstaffnotify {player} appears to be hitting illegitimately (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Suspicious combat"
+
+# NoFall ensures players take fall damage
+nofall:
+   # Do you want to enable the NoFall check
+   enabled: true
+
+   # Minimum downwards velocity for NoFall to apply
+   required_velocity: -0.2
+
+   # Should AAC deal fall damage to players?
+   deal_damage: true
+   
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for NoFall hacks (ping = {ping}, tps = {tps})"
+
+# Glide ensures players fall at the right speed
+glide:
+   # Do you want to enable the Glide check
+   enabled: true
+   
+   # How strongly should AAC enforce fall speeds (smaller values are more accurate)
+   tolerance: 0.7
+   
+   # A vertical displacement >= this will be ignored by glide, and left for the Fly check
+   max_vertical: 1.0
+   
+   # Map of violation levels to commands
+   thresholds:
+      15: "aacstaffnotify {player} is suspected for Glide hacks (ping = {ping}, tps = {tps})"
+      25: "aackick {player} Fly is not allowed"
+
+# Climb stops people climbing ladders too quickly
+climb:
+   # Do you want to enable the Climb check
+   enabled: true
+
+   # How fast should a player be allowed to start a ladder climb
+   max_start_speed: 1.5
+
+   # How fast should a player be allowed to climb a ladder
+   max_ascent_speed: 0.25
+
+   # Map of violation levels to commands
+   thresholds:
+      15: "aacstaffnotify {player} is suspected for FastLadder (ping = {ping}, tps = {tps})"
+
+# Jesus stops people from walking on water
+jesus:
+   # Do you want to enable the Jesus check
+   enabled: true
+
+   # How often should AAC check players (ms)
+   check_delay: 200
+
+   # How far must the player dip underwater
+   required_dip: 0.5
+
+   # How often must the player dip underwater (ms)
+   max_dip_delay: 800
+
+   # How long after entering the water before AAC starts to check the player (ms)
+   start_check_delay: 900
+
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for Jesus hacks (ping = {ping}, tps = {tps})"
+      20: "aackick {player} Jesus is not allowed"
+
+# Phase stops people glitching through blocks
+phase:
+   # Do you want to enable the Phase check
+   enabled: true
+
+   # Map of violation levels to commands
+   thresholds:
+      7: "aacstaffnotify {player} is suspected for Phase (ping = {ping}, tps = {tps})"
+      15: "aackick {player} Phase is not allowed"
+
+# FastUse stops players consuming items too quickly
+fastuse:
+   # Do you want to enable the FastUse check
+   enabled: true
+
+   # What delay should AAC enforce for eating an item (ms)
+   ms_to_use: 1400
+
+   # Map of violation levels to commands
+   thresholds:
+      5: "aacstaffnotify {player} is suspected for FastEat hacks (ping = {ping}, tps = {tps})"
+      9: "aackick {player} FastEat is not allowed"
+
+# FastBreak stops players from breaking blocks too quickly
+fastbreak:
+   # Do you want to enable the fastbreak check?
+   enabled: true
+
+   # How many ticks should fastbreak count as lag, and ignore
+   let_ticks: 3
+
+   # Should AAC cancel an illegal block break?
+   cancel_break: true
+
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for FastBreak hacks (ping = {ping}, tps = {tps})"
+      20: "aackick {player} FastBreak is not allowed"
+
+# FastPlace stops players from placing blocks too quickly
+fastplace:
+   # Do you want to enable the fastplace check?
+   enabled: true
+
+   # How many ms should fastplace force between block placements?
+   min_delay: 100
+
+   # Should AAC cancel an illegal block place?
+   cancel_place: true
+
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is suspected for FastPlace hacks (ping = {ping}, tps = {tps})"
+      20: "aackick {player} FastPlace is not allowed"
+
+# Spam prevents players from spamming the server chat
+spam:
+   # Do you want to enable the spam check?
+   enabled: true
+   
+   # What words should not be covered by the anti-spam check?
+   # messages less than 3 letters are already ignored
+   whitelist:
+     - "lol"
+     - "hello"
+     - "okay"
+   
+   # How many messages should a player be able to send in 10 seconds
+   message_limit: 4
+   
+   # How fast can a player send messages (ticks)
+   chat_speed: 10
+   
+   # Map of violation levels to commands
+   thresholds:
+      10: "aacstaffnotify {player} is probably spamming"
+      15: "aackick {player} Stop spamming, you sad person"
+
+### General things
+
+# How many times must a player be kicked before he is banned (-1 for no autoban)
+ban_threshold: 5
+
+# What command should be executed when a player is banned (only applies for /aackick)
+ban_command: "aacban {player}"
+
+# How long after a player is kicked should he be allowed to log in (ticks)
+kick_ticks: 120
+
+# How long before a player leaves combat after dealing/taking damage
+combat_time: 50
+
+# Should AAC kill combat loggers (combat_time)
+kill_loggers: true
+
+# Should AAC log events to a file?
+log_file: true
+
+# Should AAC log events to the console?
+log_console: true
